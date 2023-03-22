@@ -13,21 +13,17 @@ export class SearchComponent implements OnInit {
     loading: boolean = false;
 
     constructor(private _spotifyService: SpotifyService) {
-        console.log('search...');
+
     }
 
     searchArtist(searchValue: any) {
 
         this.loading = true;
 
-        console.log('searching...');
-        console.log(searchValue);
-
         this._spotifyService.searchArtist(searchValue)
             .subscribe((data: any) => {
                 this.artists = data;
                 this.loading = false;
-                console.log(this.artists);
             });
     }
 

@@ -18,7 +18,6 @@ export class CardsComponent implements OnInit {
 
     viewArtist(item: any) {
 
-        console.log(item);
         let id: string = '';
 
         if (item.type == 'artist') {
@@ -29,7 +28,6 @@ export class CardsComponent implements OnInit {
             id = item.artists[0].id;
         }
 
-        console.log(id);
         this._router.navigate(['/artist', id]);
     }
 }

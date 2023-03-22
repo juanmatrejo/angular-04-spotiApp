@@ -21,7 +21,6 @@ export class ArtistComponent implements OnInit {
 
         _activatedRoute.params.subscribe(params => {
             this.id = params['id'];
-            console.log(this.id);
             this.getArtist();
             this.getTopTracks();
         });
@@ -33,7 +32,6 @@ export class ArtistComponent implements OnInit {
     getArtist() {
         return this._spotifyService.getArtist(this.id).subscribe(data => {
             this.artist = data;
-            console.log(this.artist);
             this.loading = false;
         });
     }
@@ -41,7 +39,6 @@ export class ArtistComponent implements OnInit {
     getTopTracks() {
         return this._spotifyService.getTopTracks(this.id).subscribe((data: any) => {
             this.topTracks = data;
-            console.log(this.topTracks);
             this.loading2 = false;
         });
     }

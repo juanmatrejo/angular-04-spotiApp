@@ -14,17 +14,18 @@ export class HomeComponent implements OnInit {
     error: boolean = false;
     errorMessage: string = '';
 
-    constructor(private _spotifyService: SpotifyService) {
+    constructor(public _spotifyService: SpotifyService) {
 
-        this._spotifyService.getNewReleases().subscribe((data: any) => {
-            console.log('albums gotten!!');
-            this.newAlbums = data;
-            this.loading = false;
-            console.log(this.newAlbums);
-        }, (errorService) => {
-            console.log(errorService.error.error.message);
-            this.errorMessage = errorService.error.error.message;
-            this.error = true;
+        this._spotifyService.getNewReleases().subscribe({
+            next: (data) => {
+                this.newAlbums = data;
+                this.loading = false;
+            },
+            error: (errorService) => {
+                this.errorMessage = errorService.error.error.message;
+                this.error = true;
+            },
+            complete: () => { }
         });
     }
 
